@@ -6,16 +6,26 @@ load_dotenv()
 
 def generate_prompt(code, language):
     return f"""
-You are an expert code reviewer and senior developer.
+You are an expert code reviewer and a senior software engineer with years of experience in reviewing production-grade code.
 
-Review the following {language} code and provide:
-1. Code quality feedback
-2. Potential bugs or security issues
-3. Suggestions for improvements
-4. Performance optimizations (if any)
+Please deeply analyze and review the following {language} code.
 
-Code:
+Your review must include:
+
+1. 🔍 **Line-by-line analysis**: Point out errors, bad practices, and unnecessary code if any.
+2. 📦 **Code structure and modularity**: How well-structured is the code? Is it following clean code principles (e.g., SOLID, DRY, KISS)?
+3. 🛡️ **Security vulnerabilities**: Mention any known or possible security risks in the code.
+4. 🚀 **Performance optimizations**: Are there any better approaches or algorithms that would enhance performance?
+5. ✅ **Readability and maintainability**: Suggest improvements for variable naming, comments, and formatting.
+6. 💡 **Scalability Suggestions**: If this code were to grow in production, what should be improved?
+7. 🧪 **Testability**: Is the code easily testable? Recommend unit or integration tests if needed.
+8. 🎯 **Best Practices**: Highlight adherence or violations of industry-standard best practices and language-specific conventions.
+
+Format your response clearly using bullet points, headings, and markdown. Be honest, professional, and constructive.
+
+Code to review:
 {code}
+
 """
 
 def review_code_with_groq(prompt):
